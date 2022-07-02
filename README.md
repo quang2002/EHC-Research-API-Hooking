@@ -250,19 +250,19 @@ Quá trình làm cụ thể sẽ như sau:
 		ac_client.exe+C73E7 - mov eax,[esi+18]
 		ac_client.exe+C73EA - mov [eax],ecx
 		ac_client.exe+C73EC - mov eax,[esi+14]
-		ac_client.exe+C73EF - dec [eax]					<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HERE
+		ac_client.exe+C73EF - dec [eax]                 <<<<<<<<<<<<<<<<<<<< HERE
 		ac_client.exe+C73F1 - lea eax,[esp+1C]
-		ac_client.exe+C73F5 - push eax					<<<<<<<<<<<<<<<<<<<#
-		ac_client.exe+C73F6 - push ecx									   #
-		ac_client.exe+C73F7 - mov ecx,esi								   #
-		ac_client.exe+C73F9 - call ac_client.exe+C9140					   #
-		ac_client.exe+C73FE - pop edi									   #
-		ac_client.exe+C73FF - pop esi									   #
+		ac_client.exe+C73F5 - push eax                  <<<<<<<<<<<<<<<<<<<#
+		ac_client.exe+C73F6 - push ecx                                     #
+		ac_client.exe+C73F7 - mov ecx,esi                                  #
+		ac_client.exe+C73F9 - call ac_client.exe+C9140                     #
+		ac_client.exe+C73FE - pop edi                                      #
+		ac_client.exe+C73FF - pop esi                                      #
 		...																   #
-																		   #
-		buffer + 0			- inc [eax]									   #
-		buffer + 2			- lea eax,[esp+1C]							   #
-		buffer + 6			- jmp ac_client.exe+C73F5	>>>>>>>>>>>>>>>>>>>#
+		                                                                   #
+		buffer + 0			- inc [eax]                                    #
+		buffer + 2			- lea eax,[esp+1C]                             #
+		buffer + 6			- jmp ac_client.exe+C73F5   >>>>>>>>>>>>>>>>>>>#
 	*/
 	```
 
@@ -286,23 +286,23 @@ Quá trình làm cụ thể sẽ như sau:
 	// Tổng thể lại kết quả sẽ trông như thế này:
 
 	/*
-		...
-		ac_client.exe+C73E7 - mov eax,[esi+18]
-		ac_client.exe+C73EA - mov [eax],ecx
-		ac_client.exe+C73EC - mov eax,[esi+14]
+	    ...
+	    ac_client.exe+C73E7 - mov eax,[esi+18]
+	    ac_client.exe+C73EA - mov [eax],ecx
+	    ac_client.exe+C73EC - mov eax,[esi+14]
 	#<< ac_client.exe+C73EF - dec [eax]
 	#   ac_client.exe+C73F1 - lea eax,[esp+1C]
-	#   ac_client.exe+C73F5 - push eax					<<<<<<<<<<<<<<<<<<<#
-	#   ac_client.exe+C73F6 - push ecx									   #
-	#   ac_client.exe+C73F7 - mov ecx,esi								   #
-	#   ac_client.exe+C73F9 - call ac_client.exe+C9140					   #
-	#   ac_client.exe+C73FE - pop edi									   #
-	#   ac_client.exe+C73FF - pop esi									   #
-	#   ...																   #
-	#   															       #
-	#>> buffer + 0			- inc [eax]									   #
-	    buffer + 2			- lea eax,[esp+1C]							   #
-	    buffer + 6			- jmp ac_client.exe+C73F5	>>>>>>>>>>>>>>>>>>>#
+	#   ac_client.exe+C73F5 - push eax                  <<<<<<<<<<<<<<<<<<<#
+	#   ac_client.exe+C73F6 - push ecx                                     #
+	#   ac_client.exe+C73F7 - mov ecx,esi                                  #
+	#   ac_client.exe+C73F9 - call ac_client.exe+C9140                     #
+	#   ac_client.exe+C73FE - pop edi                                      #
+	#   ac_client.exe+C73FF - pop esi                                      #
+	#   ...                                                                #
+	#                                                                      #
+	#>> buffer + 0			- inc [eax]                                    #
+	    buffer + 2			- lea eax,[esp+1C]                             #
+	    buffer + 6			- jmp ac_client.exe+C73F5   >>>>>>>>>>>>>>>>>>>#
 	*/
 	```
 
