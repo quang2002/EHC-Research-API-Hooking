@@ -98,121 +98,20 @@ Quá trình làm cụ thể sẽ như sau:
 	Ví dụ với một game bắn súng không ai biết đến đó là AssaultCube. Tôi tìm thấy một vị trí mà tại đó mỗi khi mình bắn súng thì đạn sẽ bị giảm đi.
 
 	```x86asm
-	ac_client.exe+C726D - mov eax,[ac_client.exe+17F0DC]
-	ac_client.exe+C7272 - cmp ecx,eax
-	ac_client.exe+C7274 - cmovl eax,ecx
-	ac_client.exe+C7277 - mov ecx,edi
-	ac_client.exe+C7279 - sub ebx,eax
-	ac_client.exe+C727B - mov edx,ebx
-	ac_client.exe+C727D - call ac_client.exe+CB770
-	ac_client.exe+C7282 - mov eax,[esi+14]
-	ac_client.exe+C7285 - mov ecx,[esi+08]
-	ac_client.exe+C7288 - cmp dword ptr [eax],00
-	ac_client.exe+C728B - jne ac_client.exe+C7305
-	ac_client.exe+C728D - test ecx,ecx
-	ac_client.exe+C728F - je ac_client.exe+C72CD
-	ac_client.exe+C7291 - xor eax,eax
-	ac_client.exe+C7293 - mov [esp+2C],ecx
-	ac_client.exe+C7297 - cmp ecx,[ac_client.exe+18AC00]
-	ac_client.exe+C729D - push 00
-	ac_client.exe+C729F - push ecx
-	ac_client.exe+C72A0 - sete al
-	ac_client.exe+C72A3 - mov [esp],00000000
-	ac_client.exe+C72AA - inc eax
-	ac_client.exe+C72AB - mov [esp+30],00000001
-	ac_client.exe+C72B3 - push eax
-	ac_client.exe+C72B4 - lea eax,[esp+30]
-	ac_client.exe+C72B8 - mov [esp+30],ac_client.exe+15B00C
-	ac_client.exe+C72C0 - push eax
-	ac_client.exe+C72C1 - push 18
-	ac_client.exe+C72C3 - mov ecx,ac_client.exe+17C130
-	ac_client.exe+C72C8 - call ac_client.exe+116A50
-	ac_client.exe+C72CD - mov eax,[esi+18]
-	ac_client.exe+C72D0 - add [eax],000000FA
-	ac_client.exe+C72D6 - mov eax,[esi+08]
-	ac_client.exe+C72D9 - mov [eax+00000374],00000000
-	ac_client.exe+C72E3 - mov [esi+1C],00000000
-	ac_client.exe+C72EA - cmp dword ptr [ac_client.exe+190908],00
-	ac_client.exe+C72F1 - je ac_client.exe+C7262
-	ac_client.exe+C72F7 - mov eax,[esi+08]
-	ac_client.exe+C72FA - cmp eax,[ac_client.exe+18AC00]
-	ac_client.exe+C7300 - jmp ac_client.exe+C724F
-	ac_client.exe+C7305 - mov [ecx+00000374],esi
-	ac_client.exe+C730B - mov eax,[esi+0C]
-	ac_client.exe+C730E - inc [esi+1C]
-	ac_client.exe+C7311 - cmp byte ptr [eax+66],00
-	ac_client.exe+C7315 - jne ac_client.exe+C7321
-	ac_client.exe+C7317 - mov eax,[esi+08]
-	ac_client.exe+C731A - mov byte ptr [eax+00000204],00
-	ac_client.exe+C7321 - mov eax,[esi+04]
-	ac_client.exe+C7324 - mov eax,[eax*4+ac_client.exe+1837F0]
-	ac_client.exe+C732B - test eax,eax
-	ac_client.exe+C732D - jle ac_client.exe+C733E
-	ac_client.exe+C732F - cmp [esi+1C],eax
-	ac_client.exe+C7332 - jl ac_client.exe+C733E
-	ac_client.exe+C7334 - mov eax,[esi+08]
-	ac_client.exe+C7337 - mov byte ptr [eax+00000204],00
-	ac_client.exe+C733E - mov eax,[esi+08]
-	ac_client.exe+C7341 - lea ecx,[esp+18]
-	ac_client.exe+C7345 - push ecx
-	ac_client.exe+C7346 - lea ecx,[esp+10]
-	ac_client.exe+C734A - push ecx
-	ac_client.exe+C734B - movq xmm0,[eax+04]
-	ac_client.exe+C7350 - mov ecx,esi
-	ac_client.exe+C7352 - movq [esp+14],xmm0
-	ac_client.exe+C7358 - mov eax,[eax+0C]
-	ac_client.exe+C735B - mov [esp+1C],eax
-	ac_client.exe+C735F - mov eax,[esp+3C]
-	ac_client.exe+C7363 - movq xmm0,[eax]
-	ac_client.exe+C7367 - mov eax,[eax+08]
-	ac_client.exe+C736A - movq [esp+20],xmm0
-	ac_client.exe+C7370 - movss xmm0,[esp+1C]
-	ac_client.exe+C7376 - subss xmm0,[ac_client.exe+15BB88]
-	ac_client.exe+C737E - mov [esp+28],eax
-	ac_client.exe+C7382 - mov eax,[esi]
-	ac_client.exe+C7384 - movss [esp+1C],xmm0
-	ac_client.exe+C738A - call dword ptr [eax+14]
-	ac_client.exe+C738D - mov eax,[esi+08]
-	ac_client.exe+C7390 - cmp eax,[ac_client.exe+18AC00]
-	ac_client.exe+C7396 - jne ac_client.exe+C73AF
-	ac_client.exe+C7398 - push [esi+04]
-	ac_client.exe+C739B - push ac_client.exe+12E994
-	ac_client.exe+C73A0 - push ac_client.exe+1550C4
-	ac_client.exe+C73A5 - push 02
-	ac_client.exe+C73A7 - call ac_client.exe+D44C0
-	ac_client.exe+C73AC - add esp,10
-	ac_client.exe+C73AF - mov [ac_client.exe+19091C],00000000
-	ac_client.exe+C73B9 - lea edx,[esp+18]
-	ac_client.exe+C73BD - push [esi+08]
-	ac_client.exe+C73C0 - lea ecx,[esp+10]
-	ac_client.exe+C73C4 - call ac_client.exe+C9510
-	ac_client.exe+C73C9 - mov eax,[esi]
-	ac_client.exe+C73CB - lea ecx,[esp+1C]
-	ac_client.exe+C73CF - add esp,04
-	ac_client.exe+C73D2 - push 00
-	ac_client.exe+C73D4 - push ecx
-	ac_client.exe+C73D5 - lea ecx,[esp+14]
-	ac_client.exe+C73D9 - push ecx
-	ac_client.exe+C73DA - mov ecx,esi
-	ac_client.exe+C73DC - call dword ptr [eax+10]
-	ac_client.exe+C73DF - mov eax,[esi+0C]
-	ac_client.exe+C73E2 - push ebx
+	...
 	ac_client.exe+C73E3 - movsx ecx,word ptr [eax+48]
 	ac_client.exe+C73E7 - mov eax,[esi+18]
 	ac_client.exe+C73EA - mov [eax],ecx
 	ac_client.exe+C73EC - mov eax,[esi+14]
 	ac_client.exe+C73EF - dec [eax]					<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HERE
 	ac_client.exe+C73F1 - lea eax,[esp+1C]
-	ac_client.exe+C73F5 - push eax					<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RETURN ADDRESS
+	ac_client.exe+C73F5 - push eax
 	ac_client.exe+C73F6 - push ecx
 	ac_client.exe+C73F7 - mov ecx,esi
 	ac_client.exe+C73F9 - call ac_client.exe+C9140
 	ac_client.exe+C73FE - pop edi
 	ac_client.exe+C73FF - pop esi
-	ac_client.exe+C7400 - mov al,01
-	ac_client.exe+C7402 - pop ebx
-	ac_client.exe+C7403 - add esp,24
-	ac_client.exe+C7406 - ret 0004
+	...
 	```
 	Chúng ta có thể thấy tại `ac_client.exe+C73EF` thực hiện giảm giá trị của `[eax]`, ở đấy `eax` chính là địa chỉ của vùng nhớ lưu số lượng đạn của chúng ta hiện tại. 
 
@@ -310,6 +209,117 @@ Quá trình làm cụ thể sẽ như sau:
    
    Detours là một phương pháp phổ biến và tiện lợi hơn những phương pháp hooking khác. Với những phương pháp đã kể trên thì khi bạn muốn hook một hàm `custom_function` vào một hàm `target_function` nào đó. Thì code của custom_function của bạn đôi khi phải lồng thêm mã `asm` khiến code trở lên phức tạp hơn. Thay vào đó, với phương pháp detours thì bạn chỉ việc code như bình thường bằng ngôn ngữ bậc cao.
 
+	Lần này tôi có một ví dụ như sau, một app yêu cầu bạn nhập mật khẩu để đăng nhập và sử dụng. Nếu nhập đúng thì in ra `Welcome, admin!` ngược lại sẽ in ra `Access denied!`.
+
+	```C++
+	#include <iostream>
+
+	int authentication(std::string username, std::string password) {
+		std::cout << std::endl;
+
+		if (username == "admin" && password == "123") {
+			std::cout << "Welcome, admin!" << std::endl;
+			return 1;
+		}
+		else {
+			std::cout << "Access denied!" << std::endl;
+			return 0;
+		}
+	}
+
+	int main() {
+		std::string username;
+		std::string password;
+
+		std::cout << "Username: ";
+		std::cin >> username;
+
+		std::cout << "Password: ";
+		std::cin >> password;
+
+		authentication(username, password);
+
+		return 0;
+	}
+	```
+
+	Giờ tôi sẽ patch lại ứng dụng này, cho nó load thêm 1 dll như sau:
+
+	```C++
+	#include <iostream>
+	#include <Windows.h>
+
+	int(__cdecl* old_authentication)(std::string, std::string);
+
+	int __cdecl new_authentication(std::string username, std::string password) {
+		int result = old_authentication(username, password);
+		
+		if (result) {
+			std::cout << "Send to server - Username: " << username << std::endl;
+			std::cout << "Send to server - Password: " << password << std::endl;
+		}
+		else {
+			std::cout << "?? quen mat khau ??" << std::endl;
+		}
+		
+		return result;
+	}
+
+	void my_thread() {
+		DWORD base = (DWORD)GetModuleHandle(NULL);
+		DWORD addr = base + 0x14D0;
+
+		DWORD old;
+		VirtualProtect((void*)addr, 5, PAGE_EXECUTE_READWRITE, &old);
+
+		BYTE* trampoline = (BYTE*)VirtualAlloc(NULL, 1024, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+		memcpy(trampoline, (void*)addr, 5);
+
+		*(BYTE*)(trampoline + 5) = 0xE9;
+		*(DWORD*)(trampoline + 6) = (addr + 5) - ((DWORD)trampoline + 5) - 5;
+
+		old_authentication = (int(__cdecl*)(std::string, std::string))trampoline;
+
+		*(BYTE*)(addr) = 0xE9;
+		*(DWORD*)(addr + 1) = (DWORD)new_authentication - addr - 5;
+		
+		VirtualProtect((void*)addr, 5, old, &old);
+	}
 
 
+	BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
+	{
+		switch (ul_reason_for_call)
+		{
+		case DLL_PROCESS_ATTACH:
+			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)&my_thread, 0, 0, 0);
+			break;
+		case DLL_THREAD_ATTACH:
+			break;
+		case DLL_THREAD_DETACH:
+			break;
+		case DLL_PROCESS_DETACH:
+			break;
+		}
+		return TRUE;
+	}
+	```
+
+	Khi dll này được load bởi ứng dụng trên, thì nó sẽ hook vào hàm `authentication` để nhảy sang `new_authentication`. Tại `new_authentication` sẽ check kết quả sau khi kiểm tra username - password có thỏa mãn không. Nếu ổn thì sẽ gửi về server của hacker... (Ở đây mình chỉ viết cho có ví dụ chứ không thực hiện request nào gửi về server cả)
+
+	Mô tả cách hoạt động của detours như sau:
+
+	1. Đầu tiên chúng ta sẽ làm cho Target.exe phải load Attacker.dll, hoạt động này có thể patch lại trong file exe để nó thực hiện LoadLibrary hoặc có thể Inject dll từ bên ngoài.
+
+		![](3.png)
+
+	2. Sau khi load được một file dll, thì trong dll cũng có một hàm main (gọi là dllmain). Khi xảy ra một sự kiện nào đó như dll được load, hay dll được giải phóng đều sẽ gọi đến hàm dllmain này. Trong trường hợp này, khi dll được load thì hàm dllmain sẽ tạo một thread thực hiện công việc hook.
+
+		do_hook tạo một vùng nhớ gọi là `trampoline`. Vùng nhớ này dùng để lưu giữ 5 bytes đầu của `authentication`. Lí do là vì tý nữa, 5 bytes đầu đó sẽ bị ghi đè để thực hiện lệnh `jmp`. Nếu không muốn bị lỗi, hay crash thì phải đem 5 bytes đầu đó qua một vùng nhớ tạm, để cho chương trình sau khi jmp mà vẫn chạy qua 5 bytes backup đó.
+
+		![](4.png)
+
+	3. Sau khi copy 5 bytes cần backup qua trampoline, thì vị trí 5 bytes đầu của `authentication` lúc này dùng để jmp tới `new_auth`. Còn bên phía trampoline sẽ phải tạo một lệnh jmp đến ngay sau vị trí vừa thực hiện jmp đến `new_auth`. Cuối cùng thì gán cho old_auth = trampoline. Vì thực tế, lúc này trampoline chính là hàm `authentication` cũ.
+		
+		![](5.png)
 
